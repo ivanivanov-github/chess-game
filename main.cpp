@@ -28,11 +28,11 @@ int main()
         {
             if (i % 2 == 0)
             {
-                row.emplace_back((j % 2 == 0) ? Square(SquareColor::white) : Square(SquareColor::black));
+                row.emplace_back((j % 2 == 0) ? Square(SquareColor::white, Position(i, j)) : Square(SquareColor::black, Position(i, j)));
             }
             else
             {
-                row.emplace_back((j % 2 != 0) ? Square(SquareColor::white) : Square(SquareColor::black));
+                row.emplace_back((j % 2 != 0) ? Square(SquareColor::white, Position(i, j)) : Square(SquareColor::black, Position(i, j)));
             }
         }
         squares.emplace_back(row);
