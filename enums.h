@@ -9,6 +9,12 @@ enum class PlayerColor
     black
 };
 
+enum class SquareColor
+{
+    white,
+    black
+};
+
 inline std::string getString(const PlayerColor &playerColor)
 {
     switch (playerColor)
