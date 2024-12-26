@@ -23,6 +23,8 @@ int main()
 
   auto board = Board(squares);
 
+  board.print();
+
   auto gameEngine = GameEngine();
 
   while (true)

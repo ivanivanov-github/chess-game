@@ -1,6 +1,7 @@
 #pragma once
 
 #include "definitions.h"
+#include "pawn.h"
 #include "square.h"
 
 #include <vector>
@@ -16,11 +17,30 @@ inline void initializeSquares(std::vector<std::vector<Square>>& squares)
     {
       if (i % 2 == 0)
       {
-        row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+        if (i == 6)
+        {
+          row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                           Position(i, j),
+                           new Pawn(PieceColor::white));
+        }
+        else
+        {
+          row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+        }
       }
       else
       {
-        row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+        // second row top down (black pawns)
+        if (i == 1)
+        {
+          row.emplace_back((j % 2 != 0) ? SquareColor::white : SquareColor::black,
+                           Position(i, j),
+                           new Pawn(PieceColor::black));
+        }
+        else
+        {
+          row.emplace_back((j % 2 != 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+        }
       }
     }
     squares.emplace_back(row);
