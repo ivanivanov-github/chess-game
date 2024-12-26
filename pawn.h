@@ -3,10 +3,12 @@
 #include "enums.h"
 #include "piece.h"
 
+class Square;
+
 class Pawn : Piece
 {
 public:
-    explicit Pawn(const PieceColor &color);
+  explicit Pawn(const PieceColor& color);
 
-    bool isValidMove(const Square &startSquare, const Square &endSquare) override;
+  bool isValidMove(const Position& startPosition, const Position& endPosition) override;
 };

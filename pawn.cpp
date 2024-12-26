@@ -1,10 +1,12 @@
 #include "pawn.h"
 
-Pawn::Pawn(const PieceColor &color) : Piece(color)
+#include "square.h"
+
+Pawn::Pawn(const PieceColor& color) : Piece(color)
 {
 }
 
-bool Pawn::isValidMove(const Square &startSquare, const Square &endSquare)
+bool Pawn::isValidMove(const Position& startPosition, const Position& endPosition)
 {
-    return true;
+  return true;
 }

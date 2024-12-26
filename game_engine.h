@@ -5,9 +5,9 @@
 class GameEngine
 {
 public:
-    explicit GameEngine();
+  explicit GameEngine();
 
-    PlayerColor currentPlayerColor = PlayerColor::white;
+  PlayerColor currentPlayerColor = PlayerColor::white;
 
 private:
 };

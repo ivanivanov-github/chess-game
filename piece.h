@@ -1,15 +1,15 @@
 #pragma once
 
 #include "enums.h"
-#include "square.h"
+#include "position.h"
 
 class Piece
 {
 public:
-    explicit Piece(const PieceColor &color) : m_color(color) {};
+  explicit Piece(const PieceColor& color) : m_color(color) {};
 
-    virtual bool isValidMove(const Square &startSquare, const Square &endSquare) = 0;
+  virtual bool isValidMove(const Position& startPosition, const Position& endPosition) = 0;
 
 protected:
-    PieceColor m_color;
+  PieceColor m_color;
 };
