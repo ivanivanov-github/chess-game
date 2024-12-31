@@ -1,37 +1,31 @@
 #pragma once
 
-#include <string>
 #include <stdexcept>
-
-enum class PlayerColor
-{
-    white,
-    black
-};
+#include <string>
 
 enum class SquareColor
 {
-    white,
-    black
+  white,
+  black
 };
 
 enum class PieceColor
 {
-    white,
-    black
+  white,
+  black
 };
 
-inline std::string getString(const PlayerColor &playerColor)
+inline std::string getString(const PieceColor& playerColor)
 {
-    switch (playerColor)
-    {
-    case PlayerColor::white:
-        return "white";
-    case PlayerColor::black:
-        return "black";
-    default:
-    {
-        throw std::invalid_argument("Invalid value for playerColor. Should be on of the values of enum.");
-    }
-    }
+  switch (playerColor)
+  {
+  case PieceColor::white:
+    return "white";
+  case PieceColor::black:
+    return "black";
+  default:
+  {
+    throw std::invalid_argument("Invalid value for playerColor. Should be on of the values of enum.");
+  }
+  }
 };

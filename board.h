@@ -13,7 +13,7 @@ class Board
 public:
   explicit Board(std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> squares);
 
-  void movePiece(const Position& startPosition, const Position& endPosition);
+  void movePiece(const Position& startPosition, const Position& endPosition, const PieceColor& currentPlayerColor);
 
   void print();
 

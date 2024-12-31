@@ -1,50 +1,60 @@
 #include "board.h"
 #include "enums.h"
-#include "game_engine.h"
-#include "player.h"
+#include "game.h"
 #include "utilities/definitions.h"
 #include "utilities/initialize_helper.h"
 
-#include <array>
 #include <iostream>
+#include <limits>
+#include <string>
 
 using namespace utilities;
 
+namespace
+{
+uint8_t getRowOrColInput(const std::string& prompt)
+{
+  int num;
+  while (true)
+  {
+    std::cout << prompt;
+    std::cin >> num;
+    if (num >= 0 && num < 8)
+    {
+      return num;
+    }
+    else
+    {
+      std::cout << "Invalid input! Please enter a value between 0 and 7." << std::endl;
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  }
+}
+} // namespace
+
 int main()
 {
-  std::string input;
-
-  auto playerWhite = Player(PlayerColor::white);
-  auto playerBlack = Player(PlayerColor::black);
-
   auto board = Board(initializeSquares());
-
-  board.movePiece(Position(1, 0), Position(3, 0));
-  board.movePiece(Position(6, 1), Position(4, 1));
-  board.movePiece(Position(3, 0), Position(4, 1));
-  board.movePiece(Position(4, 1), Position(5, 1));
 
   board.print();
 
-  auto gameEngine = GameEngine();
+  auto game = Game();
 
   while (true)
   {
-    std::cout << "Current player is: " + getString(gameEngine.currentPlayerColor) << std::endl;
-    std::cout << "Press enter to pass turn." << std::endl;
-    std::getline(std::cin, input);
+    std::cout << "Current player is: " + getString(game.getCurrentPlayerColor()) << std::endl;
+    uint8_t startRow = getRowOrColInput("Enter start row: ");
+    uint8_t startCol = getRowOrColInput("Enter start col: ");
+    uint8_t endRow = getRowOrColInput("Enter end row: ");
+    uint8_t endCol = getRowOrColInput("Enter end col: ");
 
-    if (input.empty())
-    {
-      if (gameEngine.currentPlayerColor == PlayerColor::white)
-      {
-        gameEngine.currentPlayerColor = PlayerColor::black;
-      }
-      else
-      {
-        gameEngine.currentPlayerColor = PlayerColor::white;
-      }
-    }
+    board.movePiece(Position(startRow, startCol), Position(endRow, endCol), game.getCurrentPlayerColor());
+    game.switchCurrentPlayer();
+
+    std::cout << std::endl;
+    board.print();
+    std::cout << std::endl;
   };
 
   return 0;
