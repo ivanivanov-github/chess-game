@@ -4,28 +4,30 @@
 #include "pawn.h"
 #include "square.h"
 
-#include <vector>
+#include <array>
 
 namespace utilities
 {
-inline void initializeSquares(std::vector<std::vector<Square>>& squares)
+inline std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> initializeSquares()
 {
+  std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> squares =
+    std::make_unique<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>>();
+
   for (uint8_t i = 0; i < BOARD_NUM_OF_ROWS; i++)
   {
-    std::vector<Square> row;
     for (uint8_t j = 0; j < BOARD_NUM_OF_COLS; j++)
     {
       if (i % 2 == 0)
       {
         if (i == 6)
         {
-          row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black,
-                           Position(i, j),
-                           new Pawn(PieceColor::white));
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Pawn(PieceColor::white));
         }
         else
         {
-          row.emplace_back((j % 2 == 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black, Position(i, j));
         }
       }
       else
@@ -33,17 +35,17 @@ inline void initializeSquares(std::vector<std::vector<Square>>& squares)
         // second row top down (black pawns)
         if (i == 1)
         {
-          row.emplace_back((j % 2 != 0) ? SquareColor::white : SquareColor::black,
-                           Position(i, j),
-                           new Pawn(PieceColor::black));
+          (*squares)[i][j] = Square((j % 2 != 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Pawn(PieceColor::black));
         }
         else
         {
-          row.emplace_back((j % 2 != 0) ? SquareColor::white : SquareColor::black, Position(i, j));
+          (*squares)[i][j] = Square((j % 2 != 0) ? SquareColor::white : SquareColor::black, Position(i, j));
         }
       }
     }
-    squares.emplace_back(row);
   }
+  return squares;
 }
 } // namespace utilities

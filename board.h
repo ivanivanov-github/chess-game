@@ -2,16 +2,21 @@
 
 #include "enums.h"
 #include "square.h"
+#include "utilities/definitions.h"
 
-#include <vector>
+#include <array>
+
+using namespace utilities;
 
 class Board
 {
 public:
-  explicit Board(std::vector<std::vector<Square>>& squares);
+  explicit Board(std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> squares);
+
+  void movePiece(const Position& startPosition, const Position& endPosition);
 
   void print();
 
 private:
-  std::vector<std::vector<Square>> m_squares;
+  std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> m_squares;
 };

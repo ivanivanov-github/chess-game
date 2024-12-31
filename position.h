@@ -5,16 +5,18 @@
 
 struct Position
 {
-    Position(uint8_t r, uint8_t c)
+  Position(uint8_t r, uint8_t c)
+  {
+    if (r > 8 || c > 8)
     {
-        if (r > 8 || c > 8)
-        {
-            throw std::out_of_range("Row and column values must be between 0 and 8.");
-        }
-        row = r;
-        col = c;
-    };
+      throw std::out_of_range("Row and column values must be between 0 and 8.");
+    }
+    row = r;
+    col = c;
+  };
 
-    uint8_t row;
-    uint8_t col;
+  uint8_t row;
+  uint8_t col;
+
+  bool operator==(const Position& other) const { return (row == other.row && col == other.col); }
 };

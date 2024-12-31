@@ -5,8 +5,8 @@
 #include "utilities/definitions.h"
 #include "utilities/initialize_helper.h"
 
+#include <array>
 #include <iostream>
-#include <vector>
 
 using namespace utilities;
 
@@ -17,11 +17,9 @@ int main()
   auto playerWhite = Player(PlayerColor::white);
   auto playerBlack = Player(PlayerColor::black);
 
-  std::vector<std::vector<Square>> squares;
+  auto board = Board(initializeSquares());
 
-  initializeSquares(squares);
-
-  auto board = Board(squares);
+  board.movePiece(Position(1, 0), Position(2, 0));
 
   board.print();
 
@@ -29,7 +27,6 @@ int main()
 
   while (true)
   {
-
     std::cout << "Current player is: " + getString(gameEngine.currentPlayerColor) << std::endl;
     std::cout << "Press enter to pass turn." << std::endl;
     std::getline(std::cin, input);
