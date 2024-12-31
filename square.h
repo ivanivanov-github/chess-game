@@ -15,7 +15,7 @@ public:
   Square& operator=(Square& other);
   ~Square();
 
-  void placePiece(Square& startSquare);
+  void movePiece(Square& startSquare);
 
   inline SquareColor getColor() { return m_color; };
   inline Piece*& getPiece() { return m_piece; };

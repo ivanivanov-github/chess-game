@@ -19,7 +19,10 @@ int main()
 
   auto board = Board(initializeSquares());
 
-  board.movePiece(Position(1, 0), Position(2, 0));
+  board.movePiece(Position(1, 0), Position(3, 0));
+  board.movePiece(Position(6, 1), Position(4, 1));
+  board.movePiece(Position(3, 0), Position(4, 1));
+  board.movePiece(Position(4, 1), Position(5, 1));
 
   board.print();
 

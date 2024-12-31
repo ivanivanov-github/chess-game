@@ -20,19 +20,13 @@ void Board::movePiece(const Position& startPosition, const Position& endPosition
     return;
   }
 
-  Square& endSquare = (*m_squares)[endPosition.row][endPosition.col];
-  if (endSquare.getPiece() != nullptr)
-  {
-    return;
-  }
-
   Piece* piece = startSquare.getPiece();
-  if (!piece->isValidMove(startPosition, endPosition))
+  if (!piece->isValidMove(startPosition, endPosition, m_squares))
   {
     return;
   }
 
-  endSquare.placePiece(startSquare);
+  (*m_squares)[endPosition.row][endPosition.col].movePiece(startSquare);
 }
 
 void Board::print()

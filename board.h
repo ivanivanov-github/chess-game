@@ -18,5 +18,5 @@ public:
   void print();
 
 private:
-  std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> m_squares;
+  const std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_ROWS>> m_squares;
 };

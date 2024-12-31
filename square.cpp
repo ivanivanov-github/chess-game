@@ -46,19 +46,18 @@ Square::~Square()
   }
 }
 
-void Square::placePiece(Square& startSquare)
+void Square::movePiece(Square& startSquare)
 {
-  if (m_piece != nullptr)
-  {
-    return;
-  }
-
   if (startSquare.getPiece() == nullptr)
   {
     return;
   }
 
+  if (m_piece != nullptr)
+  {
+    delete m_piece;
+  }
+
   m_piece = startSquare.getPiece();
-  Piece*& piece = startSquare.getPiece();
-  piece = nullptr;
+  startSquare.m_piece = nullptr;
 }
