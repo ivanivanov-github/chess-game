@@ -24,7 +24,7 @@ Square::Square(Square&& other) : m_color(other.m_color), m_position(other.m_posi
   m_color = other.m_color;
 }
 
-Square& Square::operator=(Square& other)
+Square& Square::operator=(Square&& other)
 {
   if (this == &other)
   {

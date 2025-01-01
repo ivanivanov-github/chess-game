@@ -13,7 +13,7 @@ public:
   Square() = default;
   explicit Square(const SquareColor& color, const Position& position, Piece* piece = nullptr);
   Square(Square&& other);
-  Square& operator=(Square& other);
+  Square& operator=(Square&& other);
   ~Square();
 
   void movePiece(Square& startSquare);
