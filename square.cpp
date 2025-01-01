@@ -1,5 +1,7 @@
 #include "square.h"
 
+#include "position.h"
+
 Square::Square(const SquareColor& color, const Position& position, Piece* piece) :
   m_color(color),
   m_position(position),

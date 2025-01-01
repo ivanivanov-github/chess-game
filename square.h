@@ -2,9 +2,10 @@
 
 #include "enums.h"
 #include "piece.h"
-#include "position.h"
 
 #include <memory>
+
+struct Position;
 
 class Square
 {
