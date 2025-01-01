@@ -25,7 +25,7 @@ inline std::string getString(const PieceColor& playerColor)
     return "black";
   default:
   {
-    throw std::invalid_argument("Invalid value for playerColor. Should be on of the values of enum.");
+    throw std::invalid_argument("Invalid value for playerColor. Should be one of the values of enum PieceColor.");
   }
   }
 };
