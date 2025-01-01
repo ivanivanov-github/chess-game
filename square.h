@@ -2,9 +2,10 @@
 
 #include "enums.h"
 #include "piece.h"
-#include "position.h"
 
 #include <memory>
+
+struct Position;
 
 class Square
 {
@@ -12,7 +13,7 @@ public:
   Square() = default;
   explicit Square(const SquareColor& color, const Position& position, Piece* piece = nullptr);
   Square(Square&& other);
-  Square& operator=(Square& other);
+  Square& operator=(Square&& other);
   ~Square();
 
   void movePiece(Square& startSquare);
