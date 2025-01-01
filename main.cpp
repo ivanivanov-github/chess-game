@@ -1,6 +1,7 @@
 #include "board.h"
 #include "enums.h"
 #include "game.h"
+#include "pawn.h"
 #include "utilities/definitions.h"
 
 #include <iostream>
