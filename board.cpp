@@ -55,7 +55,7 @@ void Board::print()
       }
       else
       {
-        std::cout << ((square.getColor() == SquareColor::black) ? 0 : 1) << ' ';
+        std::cout << ((square.getColor() == SquareColor::black) ? 0 : 1) << "  ";
       }
     }
     std::cout << std::endl;
