@@ -4,8 +4,10 @@
 
 ## Checklist before requesting a review
 - [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Make sure to update the release notes if this pull request is merging in `develop`.
+- [ ] I have checked that my code respects the google c++ style guide
+- [ ] All github action checks pass
+- [ ] The name of the feature appropriately describes the pull request
+- [ ] My changes generate no new warnings
+- [ ] I have commented my code, particularly in hard-to-understand areas
 
 Note: Don't forget to cross out the elements that aren't relevant to this pull request.
