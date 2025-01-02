@@ -44,7 +44,7 @@ bool Bishop::isValidMove(
     currentCol += colDirection;
   }
 
-  // Check the end square
+  // Check if the end square is empty or has an opponent's piece
   auto& endPiece = (*squares)[endPosition.row][endPosition.col].getPiece();
   if (endPiece == nullptr || endPiece->getColor() != m_color)
   {
