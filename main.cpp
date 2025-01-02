@@ -1,3 +1,4 @@
+#include "bishop.h"
 #include "board.h"
 #include "enums.h"
 #include "game.h"
@@ -43,7 +44,15 @@ std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_R
     {
       if (i % 2 == 0)
       {
-        if (i == 6)
+        // Black Bishops
+        if (i == 0 && (j == 2 || j == 5))
+        {
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Bishop(PieceColor::black));
+        }
+        // White Pawns
+        else if (i == 6)
         {
           (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
                                     Position(i, j),
@@ -56,8 +65,15 @@ std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_R
       }
       else
       {
-        // second row top down (black pawns)
-        if (i == 1)
+        // White Bishops
+        if (i == 7 && (j == 2 || j == 5))
+        {
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Bishop(PieceColor::white));
+        }
+        // Black Pawns
+        else if (i == 1)
         {
           (*squares)[i][j] = Square((j % 2 != 0) ? SquareColor::white : SquareColor::black,
                                     Position(i, j),
