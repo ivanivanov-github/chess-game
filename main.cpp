@@ -3,6 +3,7 @@
 #include "enums.h"
 #include "game.h"
 #include "pawn.h"
+#include "rook.h"
 #include "utilities/definitions.h"
 
 #include <iostream>
@@ -51,6 +52,13 @@ std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_R
                                     Position(i, j),
                                     new Bishop(PieceColor::black));
         }
+        // Black Rooks
+        else if (i == 0 && (j == 0 || j == 7))
+        {
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Rook(PieceColor::black));
+        }
         // White Pawns
         else if (i == 6)
         {
@@ -71,6 +79,13 @@ std::unique_ptr<std::array<std::array<Square, BOARD_NUM_OF_COLS>, BOARD_NUM_OF_R
           (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
                                     Position(i, j),
                                     new Bishop(PieceColor::white));
+        }
+        // White Rooks
+        else if (i == 7 && (j == 0 || j == 7))
+        {
+          (*squares)[i][j] = Square((j % 2 == 0) ? SquareColor::white : SquareColor::black,
+                                    Position(i, j),
+                                    new Rook(PieceColor::white));
         }
         // Black Pawns
         else if (i == 1)
